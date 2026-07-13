@@ -1,0 +1,9 @@
+Jul  1 10:21:50 ubuntu-v sshd[2307]: Accepted password for john from 192.168.56.102 port 39538 ssh2
+Jul  1 10:25:03 ubuntu-v sshd[2600]: Accepted password for john from 192.168.56.102 port 46172 ssh2
+Jul  1 10:29:09 ubuntu-v sshd[2853]: Accepted password for ram from 192.168.56.102 port 58682 ssh2
+Jul  1 10:30:27 ubuntu-v sshd[3131]: Accepted password for sita from 192.168.56.102 port 37662 ssh2
+Jul  1 10:31:57 ubuntu-v sshd[3401]: Accepted password for john from 192.168.56.102 port 45966 ssh2
+Jul  1 10:32:21 ubuntu-v sshd[3542]: Accepted password for ram from 192.168.56.102 port 56856 ssh2
+Jul  1 10:33:00 ubuntu-v sshd[3689]: Accepted password for sita from 192.168.56.102 port 42634 ssh2
+Jul  1 10:46:45 ubuntu-v sudo:  peterv1 : TTY=pts/0 ; PWD=/home/peterv1 ; USER=root ; COMMAND=/usr/bin/grep 'Accepted password' /var/log/auth.log
+Jul  1 10:48:00 ubuntu-v sudo:  peterv1 : TTY=pts/0 ; PWD=/home/peterv1 ; USER=root ; COMMAND=/usr/bin/grep 'Accepted password' /var/log/auth.log
