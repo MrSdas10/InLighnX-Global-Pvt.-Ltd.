@@ -210,8 +210,3 @@ source="auth_logs.txt" ("Failed password" OR "Accepted password")
 
 ---
 
-## 👤 Author
-
-**Peter V1**  
-Cybersecurity Intern — InLighnX Global Pvt. Ltd.  
-July 2026
