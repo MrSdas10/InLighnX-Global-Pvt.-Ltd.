@@ -1,5 +1,5 @@
 ```markdown
-# 🔍 Log Analysis & SIEM-Based Threat Detection
+# 🔍 Log Analysis & SIEM-Based Threat Detectio
 
 **Defensive Cybersecurity Project | SOC Operations | InLighnX Global Pvt. Ltd. Internship**
 
