@@ -1,4 +1,3 @@
-```markdown
 # 🔍 Log Analysis & SIEM-Based Threat Detection
 
 **Defensive Cybersecurity Project | SOC Operations | InLighnX Global Pvt. Ltd. Internship**
@@ -7,7 +6,7 @@
 
 ## 📌 Project Overview
 
-This project simulates a real-world **SSH brute-force attack** in a controlled virtual lab environment and demonstrates how a SOC analyst detects, investigates, and documents such attacks using **log analysis** and **SIEM (Splunk)** tools.
+This project simulates a real-world **SSH brute-force attack** in a controlled virtual lab environment and demonstrates how a SOC analyst detects, investigates, and documents such attacks using **log analysis** and **SIEM dashboards**.
 
 An attacker machine (Kali Linux) launches automated brute-force attacks against a victim machine (Ubuntu), and all authentication events are captured, analyzed, and visualized through a Splunk dashboard.
 
@@ -39,7 +38,7 @@ An attacker machine (Kali Linux) launches automated brute-force attacks against 
 
 ## 📁 Project Structure
 
-```
+```text
 Log-Analysis-Project/
 │
 ├── collected_logs/
@@ -79,16 +78,20 @@ Log-Analysis-Project/
 ## ⚔️ Attack Summary
 
 ### Phase 1 — Single Username Attack
+
 ```bash
 hydra -l john -P password.txt ssh://192.168.56.101 -t 4 -V
 ```
-- Targeted user `john` with 207-entry password wordlist
+
+- Targeted user `john` with a 207-entry password wordlist
 - **Result:** Password `john123` cracked at attempt 188
 
 ### Phase 2 — Multi-Username Attack
+
 ```bash
 hydra -L username.txt -P password.txt ssh://192.168.56.101:22 -t 4
 ```
+
 - Targeted 8 usernames simultaneously — 1,656 total attempts
 - **Result:** 3 accounts cracked — `john:john123`, `ram:ram123`, `sita:sita123`
 
@@ -100,10 +103,10 @@ hydra -L username.txt -P password.txt ssh://192.168.56.101:22 -t 4
 |---------|-------|
 | Total failed login attempts | **764** |
 | Primary attacker IP | **192.168.56.102** |
-| Accounts compromised | **3** (john, ram, sita) |
-| Attack duration | **~14 minutes** (10:19 – 10:33 AM, Jul 1 2026) |
+| Accounts compromised | **3** (`john`, `ram`, `sita`) |
+| Attack duration | **~14 minutes** (10:19 – 10:33 AM, July 1, 2026) |
 | Attack rate | **~60 attempts/minute** |
-| Usernames targeted | john, root, ram, sita, admin, lakhnam, ubuntu |
+| Usernames targeted | `john`, `root`, `ram`, `sita`, `admin`, `lakhnam`, `ubuntu` |
 
 ---
 
@@ -162,7 +165,9 @@ source="auth_logs.txt" "Failed password" | rex "from (?<src_ip>\d+\.\d+\.\d+\.\d
 source="auth_logs.txt" "Failed password" | rex "Failed password for (?<username>\w+)" | stats count by username
 
 # Failed vs successful logins
-source="auth_logs.txt" ("Failed password" OR "Accepted password") | eval status=if(searchmatch("Failed password"),"Failed","Successful") | stats count by status
+source="auth_logs.txt" ("Failed password" OR "Accepted password")
+| eval status=if(searchmatch("Failed password"), "Failed", "Successful")
+| stats count by status
 ```
 
 ---
@@ -183,20 +188,20 @@ source="auth_logs.txt" ("Failed password" OR "Accepted password") | eval status=
 
 ## 🛡️ Security Recommendations
 
-1. **Install Fail2Ban** — auto-block IPs after 5 failed attempts
-2. **Disable password auth** — enforce SSH key-based authentication only
-3. **Strong password policy** — minimum 12 characters with complexity
-4. **Disable root SSH login** — set `PermitRootLogin no`
-5. **Firewall rules** — restrict SSH access to trusted IPs only
-6. **Change SSH port** — move from 22 to a non-standard port
-7. **Real-time SIEM alerts** — alert when failures exceed 10/minute
-8. **Enable MFA** — two-factor authentication via Google Authenticator
+1. **Install Fail2Ban** — auto-block IPs after 5 failed attempts.
+2. **Disable password authentication** — enforce SSH key-based authentication only.
+3. **Enforce strong password policy** — minimum 12 characters with complexity.
+4. **Disable root SSH login** — set `PermitRootLogin no`.
+5. **Restrict SSH with firewall rules** — allow trusted IPs only.
+6. **Change default SSH port** — move from 22 to a non-standard port.
+7. **Set real-time SIEM alerts** — alert when failures exceed 10/minute.
+8. **Enable MFA** — use two-factor authentication (e.g., Google Authenticator).
 
 ---
 
 ## 📚 Skills Demonstrated
 
-- Linux log analysis (grep, awk, sort, uniq)
+- Linux log analysis (`grep`, `awk`, `sort`, `uniq`)
 - SSH brute-force simulation with Hydra
 - SIEM log ingestion and dashboard creation (Splunk)
 - Indicator of Compromise (IoC) identification
@@ -210,4 +215,3 @@ source="auth_logs.txt" ("Failed password" OR "Accepted password") | eval status=
 **Peter V1**  
 Cybersecurity Intern — InLighnX Global Pvt. Ltd.  
 July 2026
-```
